@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "escribir.h"
+#include "fileexplorer.h"
 #include <QMdiSubWindow>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -28,10 +29,17 @@ void MainWindow::on_actionCerrar_triggered()
     close();
 }
 
+
+
 void MainWindow::cargarVentana(QWidget *widget){
     auto window = ui -> mdiArea -> addSubWindow(widget);
     window -> setWindowTitle(widget -> windowTitle());
      window -> setWindowIcon(widget -> windowIcon());
 
      window -> show();
+}
+
+void MainWindow::on_actionArchivos_triggered()
+{
+    cargarVentana(new FileExplorer(this));
 }

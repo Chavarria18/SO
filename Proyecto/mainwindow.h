@@ -20,6 +20,8 @@ private slots:
 
     void on_actionCerrar_triggered();
 
+    void on_actionArchivos_triggered();
+
 private:
     Ui::MainWindow *ui;
 

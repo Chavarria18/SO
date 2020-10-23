@@ -17,15 +17,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     escribir.cpp \
+    fileexplorer.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     escribir.h \
+    fileexplorer.h \
     mainwindow.h
 
 FORMS += \
     escribir.ui \
+    fileexplorer.ui \
     mainwindow.ui
 
 # Default rules for deployment.
