@@ -9,7 +9,7 @@ FileExplorer::FileExplorer(QWidget *parent) :
     ui->setupUi(this);
     QString dir = "/home/";
     directorio = new QFileSystemModel(this);
-    directorio->setFilter(QDir::NoDotAndDotDot | QDir::AllDirs);
+    directorio->setFilter(QDir::NoDotAndDotDot | QDir::AllEntries);
     directorio->setRootPath(dir);
 
     ui->treeView->setModel(directorio);
