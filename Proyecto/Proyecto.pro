@@ -19,17 +19,20 @@ SOURCES += \
     escribir.cpp \
     fileexplorer.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    paint.cpp
 
 HEADERS += \
     escribir.h \
     fileexplorer.h \
-    mainwindow.h
+    mainwindow.h \
+    paint.h
 
 FORMS += \
     escribir.ui \
     fileexplorer.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    paint.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

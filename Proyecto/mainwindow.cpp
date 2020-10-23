@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "escribir.h"
 #include "fileexplorer.h"
+#include "paint.h"
 #include <QMdiSubWindow>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -42,4 +43,9 @@ void MainWindow::cargarVentana(QWidget *widget){
 void MainWindow::on_actionArchivos_triggered()
 {
     cargarVentana(new FileExplorer(this));
+}
+
+void MainWindow::on_actionDibujar_triggered()
+{
+    cargarVentana(new paint(this));
 }

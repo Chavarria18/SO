@@ -22,6 +22,8 @@ private slots:
 
     void on_actionArchivos_triggered();
 
+    void on_actionDibujar_triggered();
+
 private:
     Ui::MainWindow *ui;
 

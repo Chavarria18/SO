@@ -41,6 +41,7 @@
     <addaction name="actionEscribir"/>
     <addaction name="actionCerrar"/>
     <addaction name="actionArchivos"/>
+    <addaction name="actionDibujar"/>
    </widget>
    <addaction name="menuMenu"/>
   </widget>
@@ -58,6 +59,11 @@
   <action name="actionArchivos">
    <property name="text">
     <string>Archivos</string>
+   </property>
+  </action>
+  <action name="actionDibujar">
+   <property name="text">
+    <string>Dibujar</string>
    </property>
   </action>
  </widget>
