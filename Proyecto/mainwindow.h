@@ -24,6 +24,8 @@ private slots:
 
     void on_actionDibujar_triggered();
 
+    void on_actionTasks_triggered();
+
 private:
     Ui::MainWindow *ui;
 

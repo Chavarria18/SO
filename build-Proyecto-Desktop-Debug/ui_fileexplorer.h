@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QListView>
 #include <QtWidgets/QMainWindow>
@@ -27,6 +28,7 @@ class Ui_FileExplorer
 {
 public:
     QWidget *centralwidget;
+    QGridLayout *gridLayout;
     QTreeView *treeView;
     QListView *listView;
     QMenuBar *menubar;
@@ -40,12 +42,18 @@ public:
         FileExplorer->resize(668, 327);
         centralwidget = new QWidget(FileExplorer);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        gridLayout = new QGridLayout(centralwidget);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         treeView = new QTreeView(centralwidget);
         treeView->setObjectName(QString::fromUtf8("treeView"));
-        treeView->setGeometry(QRect(20, 10, 321, 281));
+
+        gridLayout->addWidget(treeView, 0, 0, 1, 1);
+
         listView = new QListView(centralwidget);
         listView->setObjectName(QString::fromUtf8("listView"));
-        listView->setGeometry(QRect(365, 10, 271, 271));
+
+        gridLayout->addWidget(listView, 0, 1, 1, 1);
+
         FileExplorer->setCentralWidget(centralwidget);
         menubar = new QMenuBar(FileExplorer);
         menubar->setObjectName(QString::fromUtf8("menubar"));

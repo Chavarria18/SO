@@ -27,6 +27,8 @@ public:
     QAction *actionEscribir;
     QAction *actionCerrar;
     QAction *actionArchivos;
+    QAction *actionDibujar;
+    QAction *actionTasks;
     QWidget *centralwidget;
     QMdiArea *mdiArea;
     QMenuBar *menubar;
@@ -44,6 +46,10 @@ public:
         actionCerrar->setObjectName(QString::fromUtf8("actionCerrar"));
         actionArchivos = new QAction(MainWindow);
         actionArchivos->setObjectName(QString::fromUtf8("actionArchivos"));
+        actionDibujar = new QAction(MainWindow);
+        actionDibujar->setObjectName(QString::fromUtf8("actionDibujar"));
+        actionTasks = new QAction(MainWindow);
+        actionTasks->setObjectName(QString::fromUtf8("actionTasks"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         mdiArea = new QMdiArea(centralwidget);
@@ -64,6 +70,8 @@ public:
         menuMenu->addAction(actionEscribir);
         menuMenu->addAction(actionCerrar);
         menuMenu->addAction(actionArchivos);
+        menuMenu->addAction(actionDibujar);
+        menuMenu->addAction(actionTasks);
 
         retranslateUi(MainWindow);
 
@@ -76,6 +84,8 @@ public:
         actionEscribir->setText(QApplication::translate("MainWindow", "Escribir", nullptr));
         actionCerrar->setText(QApplication::translate("MainWindow", "Cerrar", nullptr));
         actionArchivos->setText(QApplication::translate("MainWindow", "Archivos", nullptr));
+        actionDibujar->setText(QApplication::translate("MainWindow", "Dibujar", nullptr));
+        actionTasks->setText(QApplication::translate("MainWindow", "Tasks", nullptr));
         menuMenu->setTitle(QApplication::translate("MainWindow", "Menu", nullptr));
     } // retranslateUi
 

@@ -54,17 +54,27 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../Proyecto/escribir.cpp \
 		../Proyecto/fileexplorer.cpp \
+		../Proyecto/global.cpp \
 		../Proyecto/main.cpp \
-		../Proyecto/mainwindow.cpp moc_escribir.cpp \
+		../Proyecto/mainwindow.cpp \
+		../Proyecto/paint.cpp \
+		../Proyecto/task.cpp moc_escribir.cpp \
 		moc_fileexplorer.cpp \
-		moc_mainwindow.cpp
+		moc_mainwindow.cpp \
+		moc_paint.cpp \
+		moc_task.cpp
 OBJECTS       = escribir.o \
 		fileexplorer.o \
+		global.o \
 		main.o \
 		mainwindow.o \
+		paint.o \
+		task.o \
 		moc_escribir.o \
 		moc_fileexplorer.o \
-		moc_mainwindow.o
+		moc_mainwindow.o \
+		moc_paint.o \
+		moc_task.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -121,6 +131,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf \
+		../Proyecto/.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
@@ -142,10 +153,16 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../Proyecto/Proyecto.pro ../Proyecto/escribir.h \
 		../Proyecto/fileexplorer.h \
-		../Proyecto/mainwindow.h ../Proyecto/escribir.cpp \
+		../Proyecto/global.h \
+		../Proyecto/mainwindow.h \
+		../Proyecto/paint.h \
+		../Proyecto/task.h ../Proyecto/escribir.cpp \
 		../Proyecto/fileexplorer.cpp \
+		../Proyecto/global.cpp \
 		../Proyecto/main.cpp \
-		../Proyecto/mainwindow.cpp
+		../Proyecto/mainwindow.cpp \
+		../Proyecto/paint.cpp \
+		../Proyecto/task.cpp
 QMAKE_TARGET  = Proyecto
 DESTDIR       = 
 TARGET        = Proyecto
@@ -154,7 +171,7 @@ TARGET        = Proyecto
 first: all
 ####### Build rules
 
-Proyecto: ui_escribir.h ui_fileexplorer.h ui_mainwindow.h $(OBJECTS)  
+Proyecto: ui_escribir.h ui_fileexplorer.h ui_mainwindow.h ui_paint.h ui_task.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../Proyecto/Proyecto.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -213,6 +230,7 @@ Makefile: ../Proyecto/Proyecto.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
@@ -290,6 +308,7 @@ Makefile: ../Proyecto/Proyecto.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf:
@@ -325,9 +344,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Proyecto/escribir.h ../Proyecto/fileexplorer.h ../Proyecto/mainwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Proyecto/escribir.cpp ../Proyecto/fileexplorer.cpp ../Proyecto/main.cpp ../Proyecto/mainwindow.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Proyecto/escribir.ui ../Proyecto/fileexplorer.ui ../Proyecto/mainwindow.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../Proyecto/escribir.h ../Proyecto/fileexplorer.h ../Proyecto/global.h ../Proyecto/mainwindow.h ../Proyecto/paint.h ../Proyecto/task.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Proyecto/escribir.cpp ../Proyecto/fileexplorer.cpp ../Proyecto/global.cpp ../Proyecto/main.cpp ../Proyecto/mainwindow.cpp ../Proyecto/paint.cpp ../Proyecto/task.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Proyecto/escribir.ui ../Proyecto/fileexplorer.ui ../Proyecto/mainwindow.ui ../Proyecto/paint.ui ../Proyecto/task.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -359,9 +378,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -pipe -std=gnu++14 -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_escribir.cpp moc_fileexplorer.cpp moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_escribir.cpp moc_fileexplorer.cpp moc_mainwindow.cpp moc_paint.cpp moc_task.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_escribir.cpp moc_fileexplorer.cpp moc_mainwindow.cpp
+	-$(DEL_FILE) moc_escribir.cpp moc_fileexplorer.cpp moc_mainwindow.cpp moc_paint.cpp moc_task.cpp
 moc_escribir.cpp: ../Proyecto/escribir.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
@@ -377,13 +396,23 @@ moc_mainwindow.cpp: ../Proyecto/mainwindow.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/jorge/Documentos/SO/build-Proyecto-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/jorge/Documentos/SO/Proyecto -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../Proyecto/mainwindow.h -o moc_mainwindow.cpp
 
+moc_paint.cpp: ../Proyecto/paint.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/jorge/Documentos/SO/build-Proyecto-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/jorge/Documentos/SO/Proyecto -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../Proyecto/paint.h -o moc_paint.cpp
+
+moc_task.cpp: ../Proyecto/task.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/jorge/Documentos/SO/build-Proyecto-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/jorge/Documentos/SO/Proyecto -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../Proyecto/task.h -o moc_task.cpp
+
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_escribir.h ui_fileexplorer.h ui_mainwindow.h
+compiler_uic_make_all: ui_escribir.h ui_fileexplorer.h ui_mainwindow.h ui_paint.h ui_task.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_escribir.h ui_fileexplorer.h ui_mainwindow.h
+	-$(DEL_FILE) ui_escribir.h ui_fileexplorer.h ui_mainwindow.h ui_paint.h ui_task.h
 ui_escribir.h: ../Proyecto/escribir.ui \
 		/usr/lib/qt5/bin/uic
 	/usr/lib/qt5/bin/uic ../Proyecto/escribir.ui -o ui_escribir.h
@@ -395,6 +424,14 @@ ui_fileexplorer.h: ../Proyecto/fileexplorer.ui \
 ui_mainwindow.h: ../Proyecto/mainwindow.ui \
 		/usr/lib/qt5/bin/uic
 	/usr/lib/qt5/bin/uic ../Proyecto/mainwindow.ui -o ui_mainwindow.h
+
+ui_paint.h: ../Proyecto/paint.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic ../Proyecto/paint.ui -o ui_paint.h
+
+ui_task.h: ../Proyecto/task.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic ../Proyecto/task.ui -o ui_task.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -414,14 +451,27 @@ fileexplorer.o: ../Proyecto/fileexplorer.cpp ../Proyecto/fileexplorer.h \
 		ui_fileexplorer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o fileexplorer.o ../Proyecto/fileexplorer.cpp
 
+global.o: ../Proyecto/global.cpp ../Proyecto/global.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o global.o ../Proyecto/global.cpp
+
 main.o: ../Proyecto/main.cpp ../Proyecto/mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Proyecto/main.cpp
 
 mainwindow.o: ../Proyecto/mainwindow.cpp ../Proyecto/mainwindow.h \
 		ui_mainwindow.h \
 		../Proyecto/escribir.h \
-		../Proyecto/fileexplorer.h
+		../Proyecto/fileexplorer.h \
+		../Proyecto/paint.h \
+		../Proyecto/task.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../Proyecto/mainwindow.cpp
+
+paint.o: ../Proyecto/paint.cpp ../Proyecto/paint.h \
+		ui_paint.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o paint.o ../Proyecto/paint.cpp
+
+task.o: ../Proyecto/task.cpp ../Proyecto/task.h \
+		ui_task.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o task.o ../Proyecto/task.cpp
 
 moc_escribir.o: moc_escribir.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_escribir.o moc_escribir.cpp
@@ -431,6 +481,12 @@ moc_fileexplorer.o: moc_fileexplorer.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
+
+moc_paint.o: moc_paint.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_paint.o moc_paint.cpp
+
+moc_task.o: moc_task.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_task.o moc_task.cpp
 
 ####### Install
 

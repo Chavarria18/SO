@@ -18,21 +18,26 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     escribir.cpp \
     fileexplorer.cpp \
+    global.cpp \
     main.cpp \
     mainwindow.cpp \
-    paint.cpp
+    paint.cpp \
+    task.cpp
 
 HEADERS += \
     escribir.h \
     fileexplorer.h \
+    global.h \
     mainwindow.h \
-    paint.h
+    paint.h \
+    task.h
 
 FORMS += \
     escribir.ui \
     fileexplorer.ui \
     mainwindow.ui \
-    paint.ui
+    paint.ui \
+    task.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
