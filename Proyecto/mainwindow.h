@@ -15,8 +15,12 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    Ui::MainWindow *ui;
+
+    void cargarVentana(QWidget *widget);
+
 private slots:
-    void on_actionEscribir_triggered();
+
 
     void on_actionCerrar_triggered();
 
@@ -27,8 +31,14 @@ private slots:
     void on_actionTasks_triggered();
 
 private:
-    Ui::MainWindow *ui;
 
-    void cargarVentana(QWidget *widget);
+
+
+
+public slots:
+
+    void on_actionEscribir_triggered();
+
+    void archivoGuardado();
 };
 #endif // MAINWINDOW_H

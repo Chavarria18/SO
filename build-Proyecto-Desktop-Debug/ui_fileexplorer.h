@@ -14,7 +14,6 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QListView>
-#include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
@@ -29,7 +28,6 @@ public:
     QWidget *centralwidget;
     QGridLayout *gridLayout;
     QListView *listView;
-    QListWidget *listWidget;
     QMenuBar *menubar;
     QMenu *menuArchivos;
     QStatusBar *statusbar;
@@ -38,7 +36,7 @@ public:
     {
         if (FileExplorer->objectName().isEmpty())
             FileExplorer->setObjectName(QString::fromUtf8("FileExplorer"));
-        FileExplorer->resize(594, 327);
+        FileExplorer->resize(347, 327);
         centralwidget = new QWidget(FileExplorer);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         gridLayout = new QGridLayout(centralwidget);
@@ -48,15 +46,10 @@ public:
 
         gridLayout->addWidget(listView, 0, 0, 1, 1);
 
-        listWidget = new QListWidget(centralwidget);
-        listWidget->setObjectName(QString::fromUtf8("listWidget"));
-
-        gridLayout->addWidget(listWidget, 0, 1, 1, 1);
-
         FileExplorer->setCentralWidget(centralwidget);
         menubar = new QMenuBar(FileExplorer);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 594, 22));
+        menubar->setGeometry(QRect(0, 0, 347, 22));
         menuArchivos = new QMenu(menubar);
         menuArchivos->setObjectName(QString::fromUtf8("menuArchivos"));
         FileExplorer->setMenuBar(menubar);
