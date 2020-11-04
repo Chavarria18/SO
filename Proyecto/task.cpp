@@ -7,6 +7,9 @@ task::task(QWidget *parent) :
     ui(new Ui::task)
 {
     ui->setupUi(this);
+    ui->listWidget->clear();
+    for (int i = 0; i < tasks.size(); ++i){
+        ui->listWidget->addItem(tasks.at(i).toLocal8Bit().constData());}
 }
 
 task::~task()

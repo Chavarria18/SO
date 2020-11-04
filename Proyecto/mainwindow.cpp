@@ -29,8 +29,9 @@ void MainWindow::on_actionEscribir_triggered()
     tasks << "Archivo de Texto";
 }
 
-void MainWindow::archivoGuardado(){
-    cargarVentana(new Escribir(this));
+void MainWindow::archivoGuardado(QString direct){
+    cargarVentana(new Escribir(this, direct));
+    tasks << "Archivo de Texto";
 }
 
 void MainWindow::on_actionCerrar_triggered()

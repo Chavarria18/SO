@@ -13,7 +13,7 @@ class Escribir : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit Escribir(QWidget *parent = nullptr);
+    explicit Escribir(QWidget *parent = nullptr, QString carpeta = ""); //carpeta es el direcorio
     ~Escribir();
 
 private:

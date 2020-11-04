@@ -30,6 +30,8 @@ private slots:
 
     void on_actionTasks_triggered();
 
+    void on_actionEscribir_triggered();
+
 private:
 
 
@@ -37,8 +39,6 @@ private:
 
 public slots:
 
-    void on_actionEscribir_triggered();
-
-    void archivoGuardado();
+    void archivoGuardado(QString direct); //Abrir archivo de texto existente
 };
 #endif // MAINWINDOW_H

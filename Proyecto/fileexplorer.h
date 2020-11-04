@@ -19,23 +19,21 @@ public:
     explicit FileExplorer(QWidget *parent = nullptr);
     ~FileExplorer();
 
-    QWidget *papa;
-
-    void cargarVentana2(QWidget *widget);
+    QWidget *papa; //Widget padre
 
 
 private slots:
     void on_treeView_clicked(const QModelIndex &index);
-
 
     void on_listView_doubleClicked(const QModelIndex &index);
 
     void on_listView_clicked(const QModelIndex &index);
 
 private:
+
     Ui::FileExplorer *ui;
-    QFileSystemModel *directorio;
-    QFileSystemModel *archivo;
+
+    QFileSystemModel *archivo; // simulación de memoria secundaria
 
 
 
