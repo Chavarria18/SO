@@ -13,13 +13,12 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
-#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QListView>
+#include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QTreeView>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -29,8 +28,8 @@ class Ui_FileExplorer
 public:
     QWidget *centralwidget;
     QGridLayout *gridLayout;
-    QTreeView *treeView;
     QListView *listView;
+    QListWidget *listWidget;
     QMenuBar *menubar;
     QMenu *menuArchivos;
     QStatusBar *statusbar;
@@ -39,25 +38,25 @@ public:
     {
         if (FileExplorer->objectName().isEmpty())
             FileExplorer->setObjectName(QString::fromUtf8("FileExplorer"));
-        FileExplorer->resize(668, 327);
+        FileExplorer->resize(594, 327);
         centralwidget = new QWidget(FileExplorer);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         gridLayout = new QGridLayout(centralwidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        treeView = new QTreeView(centralwidget);
-        treeView->setObjectName(QString::fromUtf8("treeView"));
-
-        gridLayout->addWidget(treeView, 0, 0, 1, 1);
-
         listView = new QListView(centralwidget);
         listView->setObjectName(QString::fromUtf8("listView"));
 
-        gridLayout->addWidget(listView, 0, 1, 1, 1);
+        gridLayout->addWidget(listView, 0, 0, 1, 1);
+
+        listWidget = new QListWidget(centralwidget);
+        listWidget->setObjectName(QString::fromUtf8("listWidget"));
+
+        gridLayout->addWidget(listWidget, 0, 1, 1, 1);
 
         FileExplorer->setCentralWidget(centralwidget);
         menubar = new QMenuBar(FileExplorer);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 668, 22));
+        menubar->setGeometry(QRect(0, 0, 594, 22));
         menuArchivos = new QMenu(menubar);
         menuArchivos->setObjectName(QString::fromUtf8("menuArchivos"));
         FileExplorer->setMenuBar(menubar);

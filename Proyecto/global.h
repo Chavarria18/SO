@@ -3,5 +3,6 @@
 #include <QStringList>
 
  extern QStringList tasks;
+ extern QString dirMemoria;
 
 #endif // GLOBAL_H

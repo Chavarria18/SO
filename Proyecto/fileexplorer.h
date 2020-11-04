@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QtCore>
 #include <QtGui>
+
 #include <QFileSystemModel>
 
 namespace Ui {
@@ -21,6 +22,8 @@ public:
 private slots:
     void on_treeView_clicked(const QModelIndex &index);
 
+
+    void on_listView_doubleClicked(const QModelIndex &index);
 
 private:
     Ui::FileExplorer *ui;
