@@ -6,6 +6,7 @@
 #include "task.h"
 #include "global.h"
 #include <QMdiSubWindow>
+#include <QMessageBox>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -15,6 +16,14 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     setCentralWidget(ui ->mdiArea);
 
+    for(int in = 0; in < 100; ++in) {
+        Mram[in] = 0;
+    }
+
+    for(int in = 0; in < 100; ++in) {
+        NombreArchivo[in] = "";
+    }
+
 }
 
 MainWindow::~MainWindow()
@@ -22,16 +31,36 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+int MainWindow::addID(){
+    for (int i = 0; i < Mram.size(); ++i) {
+        if(Mram[i] == 0){
+            return i;
+        }
+    }
+    return -1;
+}
 
 void MainWindow::on_actionEscribir_triggered()
 {
-    cargarVentana(new Escribir(this));
-    tasks << "Archivo de Texto";
+    int myid = addID();
+    if(myid != -1){
+        Mram[myid] = 1;
+        cargarVentana(new Escribir(this, myid));
+    }else {
+        QMessageBox::information(0, "error", "Memoria llena");
+    }
+
+
 }
 
 void MainWindow::archivoGuardado(QString direct){
-    cargarVentana(new Escribir(this, direct));
-    tasks << "Archivo de Texto";
+    int myid = addID();
+    if(myid != -1){
+        Mram[myid] = 1;
+        cargarVentana(new Escribir(this, myid, direct));
+    }else {
+        QMessageBox::information(0, "error", "Memoria llena");
+    }
 }
 
 void MainWindow::on_actionCerrar_triggered()
@@ -58,7 +87,7 @@ void MainWindow::on_actionArchivos_triggered()
 void MainWindow::on_actionDibujar_triggered()
 {
     cargarVentana(new paint(this));
-    tasks << "Paint";
+
 }
 
 void MainWindow::on_actionTasks_triggered()

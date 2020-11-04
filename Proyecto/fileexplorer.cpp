@@ -40,7 +40,7 @@ void FileExplorer::on_listView_doubleClicked(const QModelIndex &index)
 {
     QModelIndex iindex = ui->listView->currentIndex();
     QString itemText = iindex.data(Qt::DisplayRole).toString();
-    QString directo = dirMemoria + "/" + itemText; //toma la ruta del arhivo selecionado
+    QString directo = itemText; //toma la ruta del arhivo selecionado
     ((MainWindow*)papa)->archivoGuardado(directo); //señarl para abrir archivo
 }
 

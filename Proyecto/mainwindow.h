@@ -32,6 +32,8 @@ private slots:
 
     void on_actionEscribir_triggered();
 
+    int addID();
+
 private:
 
 

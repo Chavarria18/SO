@@ -8,8 +8,12 @@ task::task(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->listWidget->clear();
-    for (int i = 0; i < tasks.size(); ++i){
-        ui->listWidget->addItem(tasks.at(i).toLocal8Bit().constData());}
+    for (int i = 0; i < Mram.size(); ++i){
+        if(Mram[i] == 1){
+        ui->listWidget->addItem(NombreArchivo[i]);
+
+        }
+    }
 }
 
 task::~task()
@@ -20,6 +24,10 @@ task::~task()
 void task::on_pushButton_clicked()
 {
     ui->listWidget->clear();
-    for (int i = 0; i < tasks.size(); ++i){
-        ui->listWidget->addItem(tasks.at(i).toLocal8Bit().constData());}
+    for (int i = 0; i < Mram.size(); ++i){
+        if(Mram[i] == 1){
+        ui->listWidget->addItem(NombreArchivo[i]);
+
+        }
+    }
 }
