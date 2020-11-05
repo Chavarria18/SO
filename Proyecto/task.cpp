@@ -2,11 +2,13 @@
 #include "global.h"
 #include "ui_task.h"
 
-task::task(QWidget *parent) :
+task::task(QWidget *parent, int idTask) :
     QMainWindow(parent),
     ui(new Ui::task)
 {
     ui->setupUi(this);
+    id = idTask;
+    NombreArchivo[id] = "Task Manager";
     ui->listWidget->clear();
     for (int i = 0; i < Mram.size(); ++i){
         if(Mram[i] == 1){
@@ -18,6 +20,8 @@ task::task(QWidget *parent) :
 
 task::~task()
 {
+    Mram[id] = 0;
+    NombreArchivo[id] = "";
     delete ui;
 }
 

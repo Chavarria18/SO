@@ -6,7 +6,7 @@
 #include "mainwindow.h"
 
 
-FileExplorer::FileExplorer(QWidget *parent) :
+FileExplorer::FileExplorer(QWidget *parent, int idFile) :
     QMainWindow(parent),
     ui(new Ui::FileExplorer)
 
@@ -14,6 +14,8 @@ FileExplorer::FileExplorer(QWidget *parent) :
 
     ui->setupUi(this);
     papa = parent; //guardar parent
+    id = idFile;
+    NombreArchivo[id] = "File Explorer";
 
     archivo = new QFileSystemModel(this);
     archivo->setFilter(QDir::NoDotAndDotDot | QDir::AllEntries);
@@ -27,6 +29,8 @@ FileExplorer::FileExplorer(QWidget *parent) :
 
 FileExplorer::~FileExplorer()
 {
+    Mram[id] = 0;
+    NombreArchivo[id] = "";
     delete ui;
 }
 

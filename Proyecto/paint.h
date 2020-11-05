@@ -14,7 +14,7 @@ class paint : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit paint(QWidget *parent = nullptr);
+    explicit paint(QWidget *parent = nullptr, int idPaint = -1, QString nombreArchivo = "NewArchivoPaint.ext");
     ~paint();
 protected:
     void paintEvent(QPaintEvent *e) override;
@@ -29,6 +29,9 @@ private:
     QPoint mBegin;
     QPoint mEnd;
     bool mEnabled;
+
+    int id;
+    QString nombre;
 };
 
 #endif // PAINT_H

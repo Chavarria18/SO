@@ -16,10 +16,11 @@ class FileExplorer : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit FileExplorer(QWidget *parent = nullptr);
+    explicit FileExplorer(QWidget *parent = nullptr, int idFile = -1);
     ~FileExplorer();
 
     QWidget *papa; //Widget padre
+
 
 
 private slots:
@@ -35,7 +36,7 @@ private:
 
     QFileSystemModel *archivo; // simulación de memoria secundaria
 
-
+    int id;
 
 };
 

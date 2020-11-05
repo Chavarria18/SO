@@ -1,5 +1,6 @@
 #include "paint.h"
 #include "ui_paint.h"
+#include "global.h"
 #include <QDesktopWidget>
 #include <QPaintEvent>
 #include <QMouseEvent>
@@ -7,11 +8,15 @@
 #include <QImage>
 #include <QFileSystemModel>
 
-paint::paint(QWidget *parent) :
+paint::paint(QWidget *parent, int idPaint, QString nombreArchivo) :
     QMainWindow(parent),
     ui(new Ui::paint)
 {
     ui->setupUi(this);
+    id = idPaint;
+    nombre = nombreArchivo;
+    NombreArchivo[id]=nombre;
+
     mImage = new QImage(QApplication::desktop()->size(),QImage::Format_ARGB32_Premultiplied);
     mPainter = new QPainter(mImage);
     mEnabled = false;
@@ -19,6 +24,8 @@ paint::paint(QWidget *parent) :
 
 paint::~paint()
 {
+    NombreArchivo[id] = "";
+    Mram[id] = 0;
     delete ui;
 
 }

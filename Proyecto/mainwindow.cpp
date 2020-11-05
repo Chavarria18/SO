@@ -54,10 +54,16 @@ void MainWindow::on_actionEscribir_triggered()
 }
 
 void MainWindow::archivoGuardado(QString direct){
+    QString extencion = direct.right(4);
+
     int myid = addID();
     if(myid != -1){
         Mram[myid] = 1;
-        cargarVentana(new Escribir(this, myid, direct));
+        if(extencion == ".txt"){
+            cargarVentana(new Escribir(this, myid, direct));
+        }else{
+            cargarVentana(new paint(this, myid, direct));
+        }
     }else {
         QMessageBox::information(0, "error", "Memoria llena");
     }
@@ -80,17 +86,36 @@ void MainWindow::cargarVentana(QWidget *widget){
 
 void MainWindow::on_actionArchivos_triggered()
 {
-    cargarVentana(new FileExplorer(this));
-    tasks << "FileExplorer";
+    int myid = addID();
+    if(myid != -1){
+        Mram[myid] = 1;
+        cargarVentana(new FileExplorer(this, myid));
+    }else {
+        QMessageBox::information(0, "error", "Memoria llena");
+    }
 }
 
 void MainWindow::on_actionDibujar_triggered()
 {
-    cargarVentana(new paint(this));
+    int myid = addID();
+    if(myid != -1){
+        Mram[myid] = 1;
+        cargarVentana(new paint(this, myid));
+    }else {
+        QMessageBox::information(0, "error", "Memoria llena");
+    }
+
 
 }
 
 void MainWindow::on_actionTasks_triggered()
 {
-    cargarVentana(new task(this));
+    int myid = addID();
+    if(myid != -1){
+        Mram[myid] = 1;
+        cargarVentana(new task(this, myid));
+    }else {
+        QMessageBox::information(0, "error", "Memoria llena");
+    }
+
 }

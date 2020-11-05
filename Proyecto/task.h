@@ -12,7 +12,7 @@ class task : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit task(QWidget *parent = nullptr);
+    explicit task(QWidget *parent = nullptr, int idTask = -1);
     ~task();
 
 private slots:
@@ -20,6 +20,7 @@ private slots:
 
 private:
     Ui::task *ui;
+    int id;
 };
 
 #endif // TASK_H
