@@ -34,6 +34,7 @@
      <string>Menu</string>
     </property>
     <addaction name="actionGuardar"/>
+    <addaction name="actionAbrir"/>
    </widget>
    <addaction name="menuMenu"/>
   </widget>
@@ -41,6 +42,11 @@
   <action name="actionGuardar">
    <property name="text">
     <string>Guardar</string>
+   </property>
+  </action>
+  <action name="actionAbrir">
+   <property name="text">
+    <string>Abrir</string>
    </property>
   </action>
  </widget>
