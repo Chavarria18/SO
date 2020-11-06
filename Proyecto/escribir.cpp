@@ -8,8 +8,9 @@
 #include <QMessageBox>
 #include <QFile>
 #include <QString>
-#include<QTextStream>
+#include <QTextStream>
 #include <QMessageBox>
+#include <QStringList>
 using namespace std;
 
 Escribir::Escribir(QWidget *parent, int id, QString nombreArchivo ) :
@@ -20,7 +21,7 @@ Escribir::Escribir(QWidget *parent, int id, QString nombreArchivo ) :
 
     escribirID = id;
     nombre = nombreArchivo;
-    NombreArchivo[id]=nombre;
+
 
     //leer archivo de texto
     if(nombreArchivo != ""){
@@ -39,8 +40,29 @@ Escribir::Escribir(QWidget *parent, int id, QString nombreArchivo ) :
     }
 
     file.close();
+    }else{
+        QStringList lista = QDir(dirMemoria).entryList();
+        int numero = 0;
+        QString n;
+        QString actual;
+        QString nombreNuevo;
+
+        for (int j = 0; j < lista.size(); j++) {
+
+            actual = lista.at(j).toLocal8Bit().constData();
+            if(actual == nombreNuevo){
+                numero = numero + 1;
+            }
+
+            n = QString::number(numero);
+            nombreNuevo = "TextFile" + n + ".txt";
+            nombre = nombreNuevo;
+        }
+
+
     }
 
+    NombreArchivo[escribirID]=nombre;
 
 
 }
@@ -54,7 +76,7 @@ Escribir::~Escribir()
 
 void Escribir::on_actionGuardar_triggered()
 {
-QString dirMemoria3 =  dirMemoria + "/file.txt";
+QString dirMemoria3 =  dirMemoria + "/" + nombre;
     QFile file2(dirMemoria3);
     if(!file2.open(QFile::WriteOnly | QFile::Text)){
         QMessageBox::warning(this,"title","file not saved");
