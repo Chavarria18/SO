@@ -23,7 +23,7 @@ Escribir::Escribir(QWidget *parent, int id, QString nombreArchivo ) :
     NombreArchivo[id]=nombre;
 
     //leer archivo de texto
-    if(nombreArchivo != "NewArchivoTexto.txt"){
+    if(nombreArchivo != ""){
         QString directorioText = dirMemoria + "/" + nombre;
     QFile file(directorioText);
     if(!file.open(QIODevice::ReadOnly)) {
@@ -51,19 +51,20 @@ Escribir::~Escribir()
     Mram[escribirID] = 0;
     delete ui;
 }
-QString dirMemoria2 =  "/home/gabriel/Escritorio/SO/Proyecto/MemoriaSec/file.txt";
+
 void Escribir::on_actionGuardar_triggered()
 {
-    QFile file(dirMemoria2);
-    if(!file.open(QFile::WriteOnly | QFile::Text)){
+QString dirMemoria3 =  dirMemoria + "/file.txt";
+    QFile file2(dirMemoria3);
+    if(!file2.open(QFile::WriteOnly | QFile::Text)){
         QMessageBox::warning(this,"title","file not open");
 
     }else{
-        QTextStream out(&file);
+        QTextStream out(&file2);
         QString text = ui -> plainTextEdit->toPlainText();
         out <<text;
-        file.flush(); //todo el string del out
-        file.close();
+        file2.flush(); //todo el string del out
+        file2.close();
         QMessageBox::warning(this,"title","the file was saved");
 
     }
@@ -77,7 +78,8 @@ void Escribir::on_actionGuardar_triggered()
 
 void Escribir::on_actionAbrir_triggered()
 {
-    QFile file(dirMemoria2);
+    QString dirMemoria3 =  dirMemoria + "/file.txt";
+    QFile file(dirMemoria3);
     if(!file.open(QFile::ReadOnly | QFile::Text)){
         QMessageBox::warning(this,"title","file not open");
 
