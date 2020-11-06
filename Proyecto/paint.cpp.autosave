@@ -43,6 +43,7 @@ void paint::mousePressEvent(QMouseEvent *e){
     mBegin = e ->pos();
 
 }
+
 void paint::mouseMoveEvent(QMouseEvent *e){
     if(!mEnabled){
         e ->accept();

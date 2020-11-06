@@ -57,7 +57,7 @@ void Escribir::on_actionGuardar_triggered()
 QString dirMemoria3 =  dirMemoria + "/file.txt";
     QFile file2(dirMemoria3);
     if(!file2.open(QFile::WriteOnly | QFile::Text)){
-        QMessageBox::warning(this,"title","file not open");
+        QMessageBox::warning(this,"title","file not saved");
 
     }else{
         QTextStream out(&file2);
